@@ -7,7 +7,7 @@
     "watcher",
     "monitor"
   ],
-  "name": "alicorn-scroll-watcher",
+  "name": "alicorn-scroll-watcher-p3",
   "main": "alicorn-scroll-watcher.js",
   "version": "1.0.2",
   "license": "MIT",
