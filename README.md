@@ -1,32 +1,32 @@
-[![Build Status](https://travis-ci.org/mlunnay/alicorn-scroll-watcher.svg?branch=master)](https://travis-ci.org/mlunnay/alicorn-scroll-watcher) [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/mlunnay/alicorn-scroll-watcher)
+[![Build Status](https://travis-ci.org/mlunnay/alicorn-scroll-watcher-p3.svg?branch=master)](https://travis-ci.org/mlunnay/alicorn-scroll-watcher-p3) [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/mlunnay/alicorn-scroll-watcher-p3)
 
-_[Demo and API docs](https://www.webcomponents.org/element/mlunnay/alicorn-scroll-watcher)_
+_[Demo and API docs](https://www.webcomponents.org/element/mlunnay/alicorn-scroll-watcher-p3)_
 
-# &lt;alicorn-scroll-watcher&gt; 
-alicorn-scroll-watcher provides a mixin and custom element that generate events based on its position inside the parent document, or a specified target element. For performance it uses requestAnimationFrame, over scroll events.
+# &lt;alicorn-scroll-watcher-p3&gt; 
+alicorn-scroll-watcher-p3 provides a mixin and custom element that generate events based on its position inside the parent document, or a specified target element. For performance it uses requestAnimationFrame, over scroll events.
 
+Converted to *Polymer 3* from the original [mlunnay/alicorn-scroll-watcher](https://github.com/mlunnay/alicorn-scroll-watcher)
 
 ## Installation
-### Bower
-```bash
-bower install alicorn-scroll-watcher --save
-```
 ### NPM
 ```bash
-npm install alicorn-scroll-watcher
+npm install alicorn-scroll-watcher-p3
 ```
 ### Yarn
 ```bash
-yarn add alicorn-scroll-watcher
+yarn add alicorn-scroll-watcher-p3
 ```
 
 ## Import
-```html
-<link rel="import" href="../../alicorn-scroll-watcher/alicorn-scroll-watcher.html">
+```javascript
+import 'alicorn-scroll-watcher-p3';
 ```
 
 ## Usage
-The alicorn-scroll-watcher element fires events for when it enters or exits the target viewport.
+The alicorn-scroll-watcher-p3 element fires events for when it enters or exits the target viewport.
+```html 
+<alicorn-scroll-watcher on-enter-viewport="_loadMoreData"></alicorn-scroll-watcher>
+```
 
 ### Events
 
@@ -48,16 +48,15 @@ This fires when any part of the element has exited the target viewport.
 ### Mixin
 A mixin class AlicornScrollWatcherMixin can be extended by custom elements. The `_scrollHandler` method is called whenever the target viewport changed and can be overridden to add scroll logic.
 
-```html
-<link rel="import" href="../../alicorn-scroll-watcher/alicorn-scroll-watcher-mixin.html">
-<style>
-  class MyElement extends AlicornScrollWatcherMixin(PolymerElement) {
-    //...
+```javascript
+import {AlicornScrollWatcherMixin} from 'alicorn-scroll-watcher-p3/alicorn-scroll-watcher-mixin';
+
+class MyElement extends AlicornScrollWatcherMixin(PolymerElement) {
+//...
     _scrollHandler() {
       //...
     }
-  }
-</style>
+}
 ```
 
 ## History
