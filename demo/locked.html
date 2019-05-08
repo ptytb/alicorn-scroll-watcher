@@ -9,14 +9,35 @@
 
   <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
 
-  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../alicorn-scroll-watcher.html">
+  <script type="module" src="../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+  <script src="../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>pet.js"></script>
+  <script type="module" src="../alicorn-scroll-watcher.js"></script>
 
   <custom-style>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </custom-style>
   <style>
+    h3 {
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>"module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<style>
     h3 {
       text-align: center;
     }
@@ -55,38 +76,48 @@
       position: fixed;
       top: 0;
     }
-  </style>
-</head>
+  </style>`;
 
-<body>
-  <h3>alicorn-scroll-watcher locking demo</h3>
-  <div class="vertical-section-container centered">
-    <demo-snippet>
-      <template>
-        <div id="container">
-          <alicorn-scroll-watcher class="one" id="watcher1" lock>
-            One!
-          </alicorn-scroll-watcher>
+document.body.appendChild($_documentContainer.content);
+</script></alicorn-scroll-watcher>
           <alicorn-scroll-watcher class="two" id="watcher2" lock>
             Two!
           </alicorn-scroll-watcher>
           <alicorn-scroll-watcher class="three" id="watcher3" lock>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<h3>alicorn-scroll-watcher locking demo</h3>`;
+document.body.appendChild($_documentContainer.content);
+</script>const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+    <demo-snippet>
+      <template>
+        <div id="container">
+          <alicorn-scroll-watcher class="one" id="watcher1" lock="">
+            One!
+          </alicorn-scroll-watcher>
+          <alicorn-scroll-watcher class="two" id="watcher2" lock="">
+            Two!
+          </alicorn-scroll-watcher>
+          <alicorn-scroll-watcher class="three" id="watcher3" lock="">
             Three!
           </alicorn-scroll-watcher>
         </div>
       </template>
     </demo-snippet>
-  </div>
+  </div>`;
 
-  <script>
-    for(var id of ['watcher1', 'watcher2', 'watcher3']) {
-      var watcher = document.getElementById(id);
-      watcher.classList.toggle('locked', watcher.isAboveViewport);
-      watcher.addEventListener('viewport-state-changed', e => {
-        e.target.classList.toggle('locked', e.target.isAboveViewport);
-      });
-    }
-  </script>
-</body>
-
-</html>
+document.body.appendChild($_documentContainer.content);
+</script>><script type="module">
+import '../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '../../@polymer/iron-demo-helpers/demo-snippet.js';
+import '../alicorn-scroll-watcher.js';
+for(var id of ['watcher1', 'watcher2', 'watcher3']) {
+  var watcher = document.getElementById(id);
+  watcher.classList.toggle('locked', watcher.isAboveViewport);
+  watcher.addEventListener('viewport-state-changed', e => {
+    e.target.classList.toggle('locked', e.target.isAboveViewport);
+  });
+}
+</script>

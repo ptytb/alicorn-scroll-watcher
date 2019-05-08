@@ -9,14 +9,36 @@
 
   <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
 
-  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../alicorn-scroll-watcher.html">
+  <script type="module" src="../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+  <script src="../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>pet.js"></script>
+  <script type="module" src="../alicorn-scroll-watcher.js"></script>
 
   <custom-style>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </custom-style>
   <style>
+    header {
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script> center;
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<style>
     header {
       height: 100vh;
       width: 100%;
@@ -59,11 +81,18 @@
       justify-content: center;
       overflow: hidden;
     }
-  </style>
-</head>
+  </style>`;
 
-<body>
-  <div class="vertical-section-container centered">
+document.body.appendChild($_documentContainer.content);
+</script>    Scroll down
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 0 24 24" width="48"><path d="M7.4 7.8L12 12.4l4.6-4.6L18 9.3l-6 6-6-6z"/><path d="M0-0.7h24v24H0z" fill="none"/></svg>
+              </div>
+            </span>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
     <demo-snippet>
       <template>
 
@@ -72,7 +101,7 @@
           <span id="header-scroll">
               Scroll down
               <div>
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 0 24 24" width="48"><path d="M7.4 7.8L12 12.4l4.6-4.6L18 9.3l-6 6-6-6z"/><path d="M0-0.7h24v24H0z" fill="none"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 0 24 24" width="48"><path d="M7.4 7.8L12 12.4l4.6-4.6L18 9.3l-6 6-6-6z"></path><path d="M0-0.7h24v24H0z" fill="none"></path></svg>
               </div>
             </span>
         </header>
@@ -92,24 +121,28 @@
         </div>
       </template>
     </demo-snippet>
-  </div>
+  </div>`;
 
-  <script>
-    document.getElementById('header-scroll').addEventListener('click', () => window.scrollTo(0, window.innerHeight));
-
-    document.getElementsByTagName('alicorn-scroll-watcher')[0].addEventListener('enter-viewport', () => {
-      document.getElementById('scroll-watched').classList.remove('hidden');
-    });
-    document.getElementsByTagName('alicorn-scroll-watcher')[0].addEventListener('exit-viewport', () => {
-      document.getElementById('scroll-watched').classList.add('hidden');
-    });
-    document.getElementsByTagName('alicorn-scroll-watcher')[1].addEventListener('enter-viewport', () => {
-      document.getElementById('scroll-watched-right').classList.remove('hidden');
-    });
+document.body.appendChild($_documentContainer.content);
+</script>
     document.getElementsByTagName('alicorn-scroll-watcher')[1].addEventListener('exit-viewport', () => {
       document.getElementById('scroll-watched-right').classList.add('hidden');
-    });
-  </script>
-</body>
+  <script type="module">
+import '../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '../../@polymer/iron-demo-helpers/demo-snippet.js';
+import '../alicorn-scroll-watcher.js';
+document.getElementById('header-scroll').addEventListener('click', () => window.scrollTo(0, window.innerHeight));
 
-</html>
+document.getElementsByTagName('alicorn-scroll-watcher')[0].addEventListener('enter-viewport', () => {
+  document.getElementById('scroll-watched').classList.remove('hidden');
+});
+document.getElementsByTagName('alicorn-scroll-watcher')[0].addEventListener('exit-viewport', () => {
+  document.getElementById('scroll-watched').classList.add('hidden');
+});
+document.getElementsByTagName('alicorn-scroll-watcher')[1].addEventListener('enter-viewport', () => {
+  document.getElementById('scroll-watched-right').classList.remove('hidden');
+});
+document.getElementsByTagName('alicorn-scroll-watcher')[1].addEventListener('exit-viewport', () => {
+  document.getElementById('scroll-watched-right').classList.add('hidden');
+});
+</script>
