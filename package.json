@@ -9,7 +9,7 @@
   ],
   "name": "alicorn-scroll-watcher-p3",
   "main": "alicorn-scroll-watcher.js",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "directories": {
     "test": "test"
@@ -17,7 +17,7 @@
   "scripts": {
     "install": "polymer install",
     "start": "polymer serve",
-    "test": "polymer test",
+    "test": "polymer test"
   },
   "devDependencies": {
     "polymer-cli": "^1.0.0",
