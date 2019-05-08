@@ -9,13 +9,12 @@
   ],
   "name": "alicorn-scroll-watcher-p3",
   "main": "alicorn-scroll-watcher.js",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "license": "MIT",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "install": "polymer install",
     "start": "polymer serve",
     "test": "polymer test"
   },
